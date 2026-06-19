@@ -1,0 +1,739 @@
+/* ================================================================
+   STYLESHEET: mystyles.css
+   DESCRIPTION: The single external stylesheet shared across all
+   five pages of the Mercedes-Benz website. Covers the CSS reset,
+   base typography, header, footer, navigation, layout grid,
+   contact page styles, and a responsive media query for mobile.
+   AUTHOR: [Andile Ndlovu]
+   STUDENT NUMBER: [ST10452270]
+   MODULE: WEDE5020
+   DATE:25 May 2026
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. CSS RESET
+   Removes all default browser margin, padding, and switches to
+   border-box sizing so padding does not add to element widths.
+   The * selector targets every element on the page.
+   ---------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ----------------------------------------------------------------
+   2. BASE / BODY STYLES
+   Sets the default font stack for all text on the site.
+   Font families are listed in order of preference; the browser
+   uses the first one it finds installed on the user's device.
+   ---------------------------------------------------------------- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* ----------------------------------------------------------------
+   3. TYPOGRAPHY
+   Base heading colour applied to all h1 elements site-wide.
+   Individual pages can override this with page-specific CSS if
+   needed (e.g. headings on dark backgrounds).
+   ---------------------------------------------------------------- */
+h1 {
+  color: rgba(12, 1, 1, 0.81);
+}
+
+
+/* ----------------------------------------------------------------
+   4. HEADER
+   The <header> element appears at the top of every page and
+   contains the logo banner and navigation menu.
+   ---------------------------------------------------------------- */
+header {
+  background-color: blanchedalmond;
+}
+
+
+/* ----------------------------------------------------------------
+   5. FOOTER
+   The <footer> element appears at the bottom of every page and
+   contains the copyright notice.
+   Note: The first footer rule (background: brown) was overridden
+   by the second rule — consolidated here into one clean rule.
+   ---------------------------------------------------------------- */
+footer {
+  background-color: blanchedalmond;
+  text-align: center;
+  padding: 0.9375rem;
+}
+
+
+/* ----------------------------------------------------------------
+   6. NAVIGATION — DESKTOP
+   Styles the <ul class="navigation"> menu bar.
+   - display: flex arranges the list items in a horizontal row.
+   - list-style-type: none removes the default bullet points.
+   - gap: 1.25rem adds spacing between each nav item.
+   ---------------------------------------------------------------- */
+.navigation {
+  display: flex;
+  list-style-type: none;
+  gap: 1.25rem;
+  background-color: azure;
+}
+
+/* Makes each navigation link fill the full clickable area of its
+   list item and removes the default underline. */
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 0.625rem;
+}
+
+/* Highlights a nav link when the user hovers their mouse over it */
+.navigation li:hover {
+  background-color: bisque;
+}
+
+/* ACTIVE STATE: Highlights the link for the current page so the
+   visitor always knows which page they are on. The class="active"
+   attribute is added to the matching <a> tag on each page. */
+.navigation a.active {
+  background-color: bisque;
+  font-weight: bold;
+  border-bottom: 2px solid #8b4513;
+}
+
+
+/* ----------------------------------------------------------------
+   7. HOMEPAGE CONTAINER (index.html)
+   The .container class creates a three-column grid layout for the
+   introduction sections on the homepage.
+   - display: inline-grid uses CSS Grid in inline mode.
+   - grid-template-columns: auto auto auto creates three columns.
+   ---------------------------------------------------------------- */
+.container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  background-color: azure;
+  padding: 1.25rem;
+}
+
+/* Styles each individual div card inside the .container grid */
+.container div {
+  background-color: bisque;
+  padding: 0.625rem;
+  margin: 0.3125rem;
+  border-radius: 0.9375rem;
+}
+
+
+/* ----------------------------------------------------------------
+   8. CONTACT PAGE STYLES (contact.html)
+   The .contact-container centres and styles the contact card,
+   which holds both the info boxes and the contact form.
+   ---------------------------------------------------------------- */
+
+/* Outer card: centred on the page with a max width and a shadow */
+.contact-container {
+  max-width: 56.25rem;
+  margin: 3.125rem auto;
+  background: #ffffff;
+  padding: 1.875rem;
+  border-radius: 0.625rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h2 {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+/* Row of three info boxes (address, phone, email) displayed side
+   by side using flexbox. flex-wrap allows them to wrap on smaller
+   screens before the media query kicks in. */
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1.875rem;
+}
+
+/* Each individual info box — 30% wide with a minimum of 12.5rem
+   so it does not get too narrow before wrapping. */
+.info-box {
+  width: 30%;
+  min-width: 12.5rem;
+  margin-bottom: 0.9375rem;
+}
+
+.info-box h3 {
+  margin-bottom: 0.3125rem;
+  color: #333;
+}
+
+.info-box p,
+.info-box address {
+  margin: 0;
+  color: #666;
+  font-style: normal; /* <address> is italic by default — override here */
+}
+
+/* Stacks form fields vertically using flex column layout */
+.contact-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Shared styles for text inputs and the message textarea */
+.contact-container input,
+.contact-container textarea {
+  margin-bottom: 0.9375rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem;
+  font-size: 0.875rem;
+}
+
+/* Prevents the user from resizing the textarea and sets a
+   fixed height for the message field. */
+.contact-container textarea {
+  resize: none;
+  height: 7.5rem;
+}
+
+/* Submit button — blue background with white text */
+.contact-container button {
+  padding: 0.75rem;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Darkens the button colour when the user hovers over it */
+.contact-container button:hover {
+  background: #0056b3;
+}
+
+
+/* ----------------------------------------------------------------
+   8b. FORM LABELS, ERROR MESSAGES, AND RESPONSE MESSAGE
+   Shared across the Contact form and the Enquiry form. Error
+   messages are populated by JavaScript (Part 3) when a field
+   fails validation. The response message is shown after a
+   successful, validated submission.
+   ---------------------------------------------------------------- */
+form label {
+  font-weight: bold;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.error-msg {
+  display: block;
+  color: #c00000;
+  font-size: 0.8rem;
+  margin-bottom: 0.625rem;
+  min-height: 1rem;
+}
+
+.input-error {
+  border-color: #c00000 !important;
+  background-color: #fff5f5;
+}
+
+.response-message {
+  background-color: #e9f7ef;
+  border: 1px solid #b7e4c7;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.response-message h3 {
+  margin-bottom: 0.5rem;
+  color: #1e7e34;
+}
+
+/* Enquiry page form — same column layout and input styling as the
+   contact form, reused here so the two pages feel consistent */
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 37.5rem;
+}
+
+.enquiry-form input,
+.enquiry-form select,
+.enquiry-form textarea {
+  margin-bottom: 0.3125rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+
+.enquiry-form textarea {
+  resize: none;
+  height: 7.5rem;
+}
+
+.enquiry-form button {
+  padding: 0.75rem;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 0.625rem;
+}
+
+.enquiry-form button:hover {
+  background: #0056b3;
+}
+
+
+/* ----------------------------------------------------------------
+   9. RESPONSIVE MEDIA QUERY — MOBILE (max-width: 768px)
+   These styles override the desktop styles above when the screen
+   width is 768px or smaller (tablets and phones).
+   ---------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+
+  /* Soft background colour for mobile to visually distinguish the
+     site from the desktop version */
+  body {
+    background-color: antiquewhite;
+  }
+
+  /* Switches the navigation from a horizontal flex row to a
+     vertical block list so it fits narrow screens */
+  .navigation {
+    display: block;
+    list-style-type: none;
+    background-color: aquamarine;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .navigation a {
+    text-decoration: none;
+    display: block;
+    padding: 0.625rem;
+  }
+
+  .navigation li:hover {
+    background-color: aqua;
+  }
+
+  /* Reduces heading and paragraph text sizes for tablet screens.
+     Sizes here stay above the readable minimum (16px/1rem body
+     text is the accessible baseline; headings scale down from
+     their larger desktop size but remain comfortably legible). */
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Switches the homepage container from a three-column grid
+     to a single-column block layout on mobile */
+  .container {
+    display: block;
+    padding: 1.25rem;
+  }
+
+  /* Stacks the contact info boxes vertically on small screens */
+  .contact-info {
+    flex-direction: column;
+  }
+
+  /* Allows iframes (maps, enquiry form) to shrink on small screens */
+  iframe {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
+/* ===== END TABLET MEDIA QUERY ===== */
+
+
+/* ----------------------------------------------------------------
+   10. RESPONSIVE MEDIA QUERY — MOBILE PHONES (max-width: 480px)
+   Further adjustments for small phone screens, layered on top of
+   the 768px tablet styles above.
+   ---------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+
+  /* Slightly smaller heading sizes for phone screens */
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  /* Navigation items get tighter padding so all five links fit
+     comfortably without crowding on narrow phone screens */
+  .navigation a {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* Info boxes on the contact page take the full width */
+  .info-box {
+    width: 100%;
+  }
+
+  /* Contact and enquiry forms take the full available width */
+  .enquiry-form,
+  .contact-container form {
+    max-width: 100%;
+  }
+
+  /* Reduce outer padding on the contact card so it doesn't feel
+     cramped against the screen edges on small phones */
+  .contact-container {
+    padding: 1.25rem;
+    margin: 1.25rem auto;
+  }
+
+}
+/* ===== END MOBILE MEDIA QUERY ===== */
+/* ===== END MEDIA QUERY ===== */
+
+/* ================================================================
+   PART 3 ADDITIONS — Hamburger, Animations, Accordion, Search
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   HAMBURGER BUTTON
+   Hidden on desktop. Shown on mobile via the media query below.
+   Three <span> elements form the three horizontal bars.
+   ---------------------------------------------------------------- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 3px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ----------------------------------------------------------------
+   PAGE FADE-IN ANIMATION
+   Every page fades in gently on load.
+   ---------------------------------------------------------------- */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(0.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+main {
+  animation: pageFadeIn 0.45s ease both;
+}
+
+/* ----------------------------------------------------------------
+   SCROLL-TRIGGERED ENTRANCE ANIMATIONS
+   Elements with .animate-on-scroll start invisible and shifted.
+   IntersectionObserver in main.js adds .visible when they enter
+   the viewport, triggering this transition.
+   ---------------------------------------------------------------- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(1.75rem);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger child cards — makes grids animate one after another */
+.animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+
+/* Honour the OS accessibility setting — no motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  main {
+    animation: none;
+  }
+}
+
+/* ----------------------------------------------------------------
+   BUTTON TRANSITIONS
+   Hover colour change + press-down scale give tactile feedback.
+   ---------------------------------------------------------------- */
+button[type="submit"],
+.accordion-trigger,
+.accordion-cta {
+  transition: background-color 0.2s ease, transform 0.1s ease, color 0.2s ease;
+}
+
+button[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+/* ----------------------------------------------------------------
+   ACCORDION STYLES
+   .accordion-trigger — the clickable heading button
+   .accordion-panel  — the collapsible content area
+   .accordion-img    — model photo inside each panel
+   .spec-list        — specs list inside each panel
+   .accordion-cta    — "Enquire" link button at the bottom
+   ---------------------------------------------------------------- */
+.accordion-item {
+  margin-bottom: 0.5rem;
+}
+
+.accordion-trigger {
+  width: 100%;
+  text-align: left;
+  background-color: blanchedalmond;
+  border: 1px solid #c8a96e;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0.3125rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-trigger::after {
+  content: "\25BC"; /* ▼ */
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.accordion-trigger[aria-expanded="true"] {
+  background-color: bisque;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.accordion-trigger[aria-expanded="true"]::after {
+  transform: rotate(180deg); /* ▲ when open */
+}
+
+.accordion-trigger:hover {
+  background-color: bisque;
+}
+
+.accordion-panel {
+  border: 1px solid #c8a96e;
+  border-top: none;
+  border-radius: 0 0 0.3125rem 0.3125rem;
+  padding: 1.25rem;
+  background-color: #fffdf8;
+}
+
+.accordion-img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 0.3125rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0.75rem;
+}
+
+.spec-list li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #e8d8b8;
+  font-size: 0.9rem;
+}
+
+.spec-list li:last-child {
+  border-bottom: none;
+}
+
+.accordion-cta {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.3125rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.accordion-cta:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+/* ----------------------------------------------------------------
+   SEARCH / FILTER INPUT
+   ---------------------------------------------------------------- */
+.search-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+}
+
+.search-count {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 0.25rem;
+  min-height: 1.2em;
+}
+
+/* ----------------------------------------------------------------
+   HOURS BOX (bottom of products page)
+   ---------------------------------------------------------------- */
+.hours-box {
+  margin-top: 2rem;
+  background-color: azure;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  max-width: 400px;
+}
+
+.hours-box ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0.75rem;
+}
+
+.hours-box li {
+  padding: 0.2rem 0;
+}
+
+/* ----------------------------------------------------------------
+   FORM INPUTS — GLOBAL FOCUS ANIMATION
+   Works on both the contact and enquiry forms.
+   ---------------------------------------------------------------- */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Select dropdown base styling */
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  background-color: #fff;
+  margin-bottom: 0.3125rem;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  cursor: pointer;
+}
+
+/* Response table inside the enquiry response card */
+.response-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.response-table th,
+.response-table td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #b7e4c7;
+}
+
+.response-table th {
+  background-color: #d4edda;
+  font-weight: 600;
+  white-space: nowrap;
+  width: 35%;
+}
+
+/* ----------------------------------------------------------------
+   HAMBURGER MOBILE OVERRIDE
+   On screens 768px and below, show the button and hide/show
+   the nav list based on the .open class.
+   ---------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .navigation {
+    display: none;
+    flex-direction: column;
+  }
+
+  .navigation.open {
+    display: flex;
+  }
+}
