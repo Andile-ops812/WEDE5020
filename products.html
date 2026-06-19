@@ -27,6 +27,15 @@
   <meta name="keywords" content="Mercedes-Benz models, G63, C63, C200 AMG, Maybach,
   AMG, car prices, South Africa, luxury vehicles">
 
+  <!-- Author (SEO) -->
+  <meta name="author" content="Andile Ndlovu">
+
+  <!-- Open Graph tags for social sharing (SEO) -->
+  <meta property="og:title" content="Products | Mercedes-Benz">
+  <meta property="og:description" content="Browse the Mercedes-Benz model range available in South Africa — including G63, C63, and C200 AMG.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/2020-mercedes-gls63-1596051570-jpg.jpg">
+
   <!-- Title shown in the browser tab -->
   <title>Products | Mercedes-Benz</title>
 
@@ -50,6 +59,12 @@
          class="active" marks Products as the current page.
          ======================================================== -->
     <nav>
+      <!-- Hamburger button — visible on mobile only, hidden on desktop via CSS -->
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul class="navigation">
         <li><a href="index.html">Home</a></li>
         <li><a href="about_us.html">About</a></li>
@@ -107,65 +122,156 @@
     <!-- ===== END BRAND TIERS SECTION ===== -->
 
     <!-- ==========================================================
-         MODELS SHOWCASE SECTION: Displays product images, a list
-         of available models with year ranges, pricing, and
-         dealership operating hours.
+         MODELS SHOWCASE SECTION — PART 3 UPGRADE
+         Now features:
+           • A live search / filter input
+           • An accordion showing each model's image, year range,
+             price, description, and a link to the enquiry page
+         JS: handled by handleProductSearch() and the accordion
+         toggle in main.js.
          ========================================================== -->
     <section>
       <h2>Our Mercedes-Benz Models</h2>
 
       <!-- --------------------------------------------------------
-           MODEL IMAGES: Three product images showing different
-           Mercedes-Benz models. Each has descriptive alt text
-           for accessibility and SEO.
+           SEARCH / FILTER INPUT
+           Typing here filters the accordion items in real time.
+           data-keywords on each .accordion-item allow extra terms
+           (e.g. "electric", "suv") to trigger a match even when
+           those words aren't in the visible card text.
            -------------------------------------------------------- -->
-      <img src="images/2020-mercedes-gls63-1596051570-jpg.jpg"
-           alt="Mercedes-Benz GLS63 2020 — full-size luxury SUV">
-      <img src="images/mercedes-benz-g580-with-eq-technology-electric-g-class-feature-image-1.jpg"
-           alt="Mercedes-Benz G580 EQ Technology — electric G-Class">
-      <img src="images/3f52573c6b319a1f377d0174608fb5a6bc00a0a8.jpg"
-           alt="Mercedes-Benz classic model">
-      <!-- ===== END MODEL IMAGES ===== -->
+      <div class="search-wrapper animate-on-scroll">
+        <label for="productSearch">Search models:</label>
+        <input type="text"
+               id="productSearch"
+               class="search-input"
+               placeholder="e.g. G63, C63, electric, SUV&hellip;"
+               aria-label="Search vehicle models">
+        <p id="searchCount" class="search-count" aria-live="polite"></p>
+      </div>
 
       <!-- --------------------------------------------------------
-           MODELS LIST: Unordered list of available models and the
-           year range during which they are/were sold. Uses <ul>
-           for semantic markup — NOT <pre> (which is for code only).
+           MODEL ACCORDION CARDS
+           Each .accordion-item contains a trigger button and a
+           collapsible panel with image, specs, and a CTA link.
+           data-keywords adds hidden search terms per card.
            -------------------------------------------------------- -->
-      <h3>Available Models</h3>
-      <ul>
-        <li>Mercedes-Benz G63 (2019 – 2026)</li>
-        <li>Mercedes-Benz C63 (2023 – 2025)</li>
-        <li>Mercedes-Benz C200 AMG (2017 – 2024)</li>
-      </ul>
-      <!-- ===== END MODELS LIST ===== -->
+      <div id="modelAccordion">
 
-      <!-- --------------------------------------------------------
-           PRICING: Recommended retail prices in South African Rand
-           for each model listed above.
-           -------------------------------------------------------- -->
-      <h3>Purchase Price</h3>
-      <ul>
-        <li>Mercedes-Benz G63 — R5 100 000</li>
-        <li>Mercedes-Benz C63 — R830 000</li>
-        <li>Mercedes-Benz C200 AMG — R500 200</li>
-      </ul>
-      <!-- ===== END PRICING ===== -->
+        <!-- G63 AMG -->
+        <div class="accordion-item animate-on-scroll"
+             data-keywords="g63 amg suv luxury 5100000 v8 off-road 2019 2026">
+          <button class="accordion-trigger"
+                  aria-expanded="false"
+                  aria-controls="panel-g63">
+            Mercedes-Benz G63 AMG &mdash; R5&nbsp;100&nbsp;000
+          </button>
+          <div class="accordion-panel" id="panel-g63" hidden>
+            <img src="images/2020-mercedes-gls63-1596051570-jpg.jpg"
+                 alt="Mercedes-Benz GLS63 2020 — luxury performance SUV"
+                 loading="lazy"
+                 class="accordion-img">
+            <ul class="spec-list">
+              <li><strong>Years:</strong> 2019 &ndash; 2026</li>
+              <li><strong>Price:</strong> R5&nbsp;100&nbsp;000</li>
+              <li><strong>Engine:</strong> 4.0L twin-turbo AMG V8, 430&nbsp;kW</li>
+              <li><strong>Availability:</strong> Limited stock &mdash; early booking recommended</li>
+            </ul>
+            <p>The G63 AMG is a hand-built performance SUV combining legendary
+               off-road capability with AMG twin-turbo power and an iconic boxy silhouette.</p>
+            <a href="enquires.html" class="accordion-cta">Enquire About This Model &rarr;</a>
+          </div>
+        </div>
 
-      <!-- --------------------------------------------------------
-           OPERATING HOURS: Displays the dealership trading hours
-           across the week. Sunday is listed as closed.
-           -------------------------------------------------------- -->
-      <h3>Operating Hours</h3>
-      <ul>
-        <li>Monday – Friday: 08:00 – 17:00</li>
-        <li>Saturday: 08:00 – 14:00</li>
-        <li>Sunday: Closed</li>
-      </ul>
-      <!-- ===== END OPERATING HOURS ===== -->
+        <!-- C63 AMG -->
+        <div class="accordion-item animate-on-scroll"
+             data-keywords="c63 amg sedan saloon sport performance 830000 2023 2025">
+          <button class="accordion-trigger"
+                  aria-expanded="false"
+                  aria-controls="panel-c63">
+            Mercedes-Benz C63 AMG &mdash; R830&nbsp;000
+          </button>
+          <div class="accordion-panel" id="panel-c63" hidden>
+            <img src="images/8_Of_The_Best_Mercedes-Benz_Sold_On_Collecting_Cars__2_.jpg"
+                 alt="Mercedes-Benz C63 AMG sports saloon"
+                 loading="lazy"
+                 class="accordion-img">
+            <ul class="spec-list">
+              <li><strong>Years:</strong> 2023 &ndash; 2025</li>
+              <li><strong>Price:</strong> R830&nbsp;000</li>
+              <li><strong>Engine:</strong> 2.0L turbocharged plug-in hybrid, 300&nbsp;kW</li>
+              <li><strong>Availability:</strong> Available at Sandton and Polokwane branches</li>
+            </ul>
+            <p>The C63 AMG delivers electrified performance in a compact sports saloon body,
+               blending a luxury interior with race-bred DNA and advanced hybrid technology.</p>
+            <a href="enquires.html" class="accordion-cta">Enquire About This Model &rarr;</a>
+          </div>
+        </div>
 
-      <!-- Note informing visitors that test drives are available -->
-      <p><strong>Test driving is available at all Mercedes-Benz branches.</strong></p>
+        <!-- C200 AMG -->
+        <div class="accordion-item animate-on-scroll"
+             data-keywords="c200 amg electric eq technology 500200 2017 2024 efficient touring">
+          <button class="accordion-trigger"
+                  aria-expanded="false"
+                  aria-controls="panel-c200">
+            Mercedes-Benz C200 AMG &mdash; R500&nbsp;200
+          </button>
+          <div class="accordion-panel" id="panel-c200" hidden>
+            <img src="images/mercedes-benz-g580-with-eq-technology-electric-g-class-feature-image-1.jpg"
+                 alt="Mercedes-Benz G580 EQ Technology — electric G-Class"
+                 loading="lazy"
+                 class="accordion-img">
+            <ul class="spec-list">
+              <li><strong>Years:</strong> 2017 &ndash; 2024</li>
+              <li><strong>Price:</strong> R500&nbsp;200</li>
+              <li><strong>Engine:</strong> 2.0L turbocharged petrol, 150&nbsp;kW</li>
+              <li><strong>Availability:</strong> In stock at the Sandton branch; Polokwane by order</li>
+            </ul>
+            <p>The C200 AMG combines refined comfort with efficient performance,
+               ideal for both city driving and long-distance touring on South African roads.</p>
+            <a href="enquires.html" class="accordion-cta">Enquire About This Model &rarr;</a>
+          </div>
+        </div>
+
+        <!-- GLS 600 Maybach -->
+        <div class="accordion-item animate-on-scroll"
+             data-keywords="gls 600 maybach ultra luxury order special 3200000 s580">
+          <button class="accordion-trigger"
+                  aria-expanded="false"
+                  aria-controls="panel-maybach">
+            Mercedes-Benz GLS 600 Maybach &mdash; from R3&nbsp;200&nbsp;000
+          </button>
+          <div class="accordion-panel" id="panel-maybach" hidden>
+            <img src="images/3f52573c6b319a1f377d0174608fb5a6bc00a0a8.jpg"
+                 alt="Mercedes-Benz classic luxury model"
+                 loading="lazy"
+                 class="accordion-img">
+            <ul class="spec-list">
+              <li><strong>Tier:</strong> Maybach (ultra-luxury)</li>
+              <li><strong>Price:</strong> from R3&nbsp;200&nbsp;000</li>
+              <li><strong>Engine:</strong> 4.0L V8 biturbo, 410&nbsp;kW</li>
+              <li><strong>Availability:</strong> Special order only &mdash; lead time 8&ndash;12 weeks</li>
+            </ul>
+            <p>The GLS 600 Maybach is the pinnacle of Mercedes luxury &mdash; featuring
+               a rear executive lounge, Maybach-exclusive trimmings, and unmatched refinement.</p>
+            <a href="enquires.html" class="accordion-cta">Enquire About This Model &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+      <!-- ===== END MODEL ACCORDION ===== -->
+
+      <!-- Operating hours and test drive info below the accordion -->
+      <div class="hours-box animate-on-scroll">
+        <h3>Operating Hours</h3>
+        <ul>
+          <li>Monday &ndash; Friday: 08:00 &ndash; 17:00</li>
+          <li>Saturday: 08:00 &ndash; 14:00</li>
+          <li>Sunday: Closed</li>
+        </ul>
+        <p><strong>Test driving is available at all Mercedes-Benz branches.</strong>
+           <a href="enquires.html">Book a test drive &rarr;</a></p>
+      </div>
 
     </section>
     <!-- ===== END MODELS SHOWCASE SECTION ===== -->
@@ -181,6 +287,9 @@
     <p>Mercedes-Benz &copy;&trade; 2026</p>
   </footer>
   <!-- ===== END FOOTER ===== -->
+
+  <!-- External JS — handles navigation, animations, forms -->
+  <script src="js_assets/main.js"></script>
 
 </body>
 </html>

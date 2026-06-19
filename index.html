@@ -19,7 +19,6 @@
 
   <!-- Makes the page scale correctly on mobile and tablet screens -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content=" The mercedes benz company offers innovation and complex cars">
 
   <!-- Description shown in Google search results (SEO) -->
   <meta name="description" content="Mercedes-Benz South Africa — Discover luxury vehicles,
@@ -28,6 +27,18 @@
   <!-- Keywords to help search engines find this page (SEO) -->
   <meta name="keywords" content="Mercedes-Benz, luxury cars, AMG, Maybach, Sandton,
   Polokwane, South Africa, vehicles, dealership">
+
+  <!-- Author (SEO) -->
+  <meta name="author" content="Andile Ndlovu">
+
+  <!-- Open Graph tags for social sharing (SEO) -->
+  <meta property="og:title" content="Home | Mercedes-Benz">
+  <meta property="og:description" content="Mercedes-Benz South Africa — Discover luxury vehicles, browse our model range, and find your nearest dealership.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/Image1 Apr 17, 2026, 03_42_57 PM.png">
+
+  <!-- Preload hero image for faster page load (page speed optimisation) -->
+  <link rel="preload" as="image" href="images/Image1 Apr 17, 2026, 03_42_57 PM.png">
 
   <!-- Title shown in the browser tab -->
   <title>Home | Mercedes-Benz</title>
@@ -54,6 +65,12 @@
          is visually highlighted in the navigation bar.
          ======================================================== -->
     <nav>
+      <!-- Hamburger button — visible on mobile only, hidden on desktop via CSS -->
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul class="navigation">
         <!-- Home is the active/current page -->
         <li><a href="index.html" class="active">Home</a></li>
@@ -87,7 +104,7 @@
          displays content in three columns on desktop, collapsing
          to a single column on mobile.
          ========================================================== -->
-    <div class="container">
+    <div class="container animate-on-scroll">
 
       <!-- Brand introduction paragraph -->
       <div>
@@ -170,6 +187,9 @@
     <p>Mercedes-Benz &copy;&trade; 2026</p>
   </footer>
   <!-- ===== END FOOTER ===== -->
+
+  <!-- External JS — handles navigation, animations, forms -->
+  <script src="js_assets/main.js"></script>
 
 </body>
 </html>

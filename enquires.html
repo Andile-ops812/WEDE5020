@@ -28,11 +28,23 @@
   <meta name="keywords" content="Mercedes-Benz enquiry, contact form, vehicle enquiry,
   South Africa, test drive, financing">
 
+  <!-- Author (SEO) -->
+  <meta name="author" content="Andile Ndlovu">
+
+  <!-- Open Graph tags for social sharing (SEO) -->
+  <meta property="og:title" content="Enquiries | Mercedes-Benz">
+  <meta property="og:description" content="Submit an enquiry to Mercedes-Benz South Africa. Ask about vehicle availability, pricing, test drives, or financing options.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/Image1 Apr 17, 2026, 03_42_57 PM.png">
+
   <!-- Title shown in the browser tab -->
   <title>Enquiries | Mercedes-Benz</title>
 
   <!-- Links the external CSS stylesheet to this HTML page -->
   <link rel="stylesheet" href="css_assets/mystyles.css">
+
+  <!-- External JS — handles navigation, animations, forms (Part 3) -->
+  <script src="js_assets/main.js" defer></script>
 </head>
 
 <body>
@@ -51,6 +63,12 @@
          class="active" marks Enquiries as the current page.
          ======================================================== -->
     <nav>
+      <!-- Hamburger button — visible on mobile only, hidden on desktop via CSS -->
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul class="navigation">
         <li><a href="index.html">Home</a></li>
         <li><a href="about_us.html">About</a></li>
@@ -84,31 +102,75 @@
     </p>
 
     <!-- ==========================================================
-         GOOGLE FORM SECTION: An embedded Google Form that allows
-         visitors to submit enquiries directly to Mercedes-Benz.
-         - width="640" and height="2760" are set to show the full
-           form without an internal scroll bar.
-         - frameborder="0" removes the visible iframe border.
-         - title attribute is required for accessibility so screen
-           readers can describe the iframe to the user.
-         - The fallback text "Loading..." shows if the iframe fails.
+         ENQUIRY FORM SECTION: A real HTML form that allows visitors
+         to enquire about a specific model or tier (Mercedes-Benz,
+         AMG, or Maybach) and submit their contact details and
+         message. Replaces the previous embedded Google Form, which
+         could not be validated or processed with this site's own
+         JavaScript. Inputs and IDs are ready for client-side
+         validation and a dynamic response (added in Part 3).
          ========================================================== -->
     <section>
       <h2>Submit Your Enquiry</h2>
 
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLScnX2Yp9Imta4KcUiTnyJ96swhuqb1GikCASXHO7kmR9je0rQ/viewform?embedded=true"
-        width="640"
-        height="2760"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Mercedes-Benz Customer Enquiries Form">
-        Loading form…
-      </iframe>
+      <form id="enquiryForm" class="enquiry-form" onsubmit="return handleEnquirySubmit(event);">
+
+        <!-- Full name input -->
+        <label for="enquiryName">Full Name</label>
+        <input type="text"
+               id="enquiryName"
+               name="enquiryName"
+               placeholder="Your full name"
+               required>
+        <!-- Error message will be shown here by JavaScript (Part 3) -->
+        <span class="error-msg" id="enquiryNameError"></span>
+
+        <!-- Email address input -->
+        <label for="enquiryEmail">Email</label>
+        <input type="email"
+               id="enquiryEmail"
+               name="enquiryEmail"
+               placeholder="Your email address"
+               required>
+        <span class="error-msg" id="enquiryEmailError"></span>
+
+        <!-- What the visitor is enquiring about -->
+        <label for="enquirySubject">What are you enquiring about?</label>
+        <select id="enquirySubject" name="enquirySubject" required>
+          <option value="" disabled selected>Please select an option</option>
+          <option value="mercedes-benz">Mercedes-Benz (C-Class, E-Class, GLE)</option>
+          <option value="amg">AMG (C63, G63, GT)</option>
+          <option value="maybach">Maybach (S580, GLS 600)</option>
+          <option value="test-drive">Test Drive Booking</option>
+          <option value="financing">Financing Options</option>
+          <option value="other">Other</option>
+        </select>
+        <span class="error-msg" id="enquirySubjectError"></span>
+
+        <!-- Message textarea -->
+        <label for="enquiryMessage">Message</label>
+        <textarea id="enquiryMessage"
+                  name="enquiryMessage"
+                  placeholder="Tell us more about your enquiry"
+                  rows="5"
+                  required></textarea>
+        <span class="error-msg" id="enquiryMessageError"></span>
+
+        <!-- Submit button -->
+        <button type="submit">Submit Enquiry</button>
+
+      </form>
+
+      <!-- ========================================================
+           RESPONSE MESSAGE: Hidden by default. Shown by JavaScript
+           (added in Part 3) after a successful, validated submission,
+           with a dynamic message about cost and availability based
+           on the selected tier above.
+           ======================================================== -->
+      <div id="enquiryResponse" class="response-message" style="display:none;"></div>
 
     </section>
-    <!-- ===== END GOOGLE FORM SECTION ===== -->
+    <!-- ===== END ENQUIRY FORM SECTION ===== -->
 
   </main>
   <!-- ===== END MAIN CONTENT ===== -->
@@ -121,6 +183,9 @@
     <p>Mercedes-Benz &copy;&trade; 2026</p>
   </footer>
   <!-- ===== END FOOTER ===== -->
+
+  <!-- External JS — handles navigation, animations, forms -->
+  <script src="js_assets/main.js"></script>
 
 </body>
 </html>

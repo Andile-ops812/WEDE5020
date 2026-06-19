@@ -1,0 +1,13 @@
+# ================================================================
+# robots.txt — Mercedes-Benz South Africa (WEDE5020 student project)
+# Instructs search engine crawlers which pages to index.
+# All five public pages are allowed.
+# ================================================================
+
+User-agent: *
+Allow: /
+Disallow: /private/
+
+# Full sitemap URL — update [username] and [repo-name] after
+# deploying to GitHub Pages
+Sitemap: https://[username].github.io/[repo-name]/sitemap.xml

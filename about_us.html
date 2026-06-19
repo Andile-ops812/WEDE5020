@@ -27,26 +27,20 @@
   <meta name="keywords" content="Mercedes-Benz, about us, history, Karl Benz, mission,
   vision, team, luxury cars">
 
+  <!-- Author (SEO) -->
+  <meta name="author" content="Andile Ndlovu">
+
+  <!-- Open Graph tags for social sharing (SEO) -->
+  <meta property="og:title" content="About Us | Mercedes-Benz">
+  <meta property="og:description" content="Learn about the history, vision, mission, and team behind Mercedes-Benz South Africa.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/Image1 Apr 17, 2026, 03_42_57 PM.png">
+
   <!-- Title shown in the browser tab -->
   <title>About Us | Mercedes-Benz</title>
-  <!-- jQuery library and files that load lightbox, -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <!-- External javascript saved in js_assets folder -->
-  <script src="js_assets/myjavascript.js"></script>
-
-  <!-- Lightbox2 CSS - Provides the styling for the Lightbox, Image positioning, Next/Previous 
-  buttons, Close button (×), Captions. Without this file, the Lightbox may still open but will be unstyled.-->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
-
-  <!--Lightbox2 js function (was build using jQuery, to function it needs jQuery to be loaded 
-  first). Contains the Lightbox functionality, Opening images in a popup, Closing images,
-  Gallery navigation, Image animations-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
   <!-- Links the external CSS stylesheet to this HTML page -->
   <link rel="stylesheet" href="css_assets/mystyles.css">
-
 </head>
 
 <body>
@@ -55,12 +49,6 @@
        HEADER: Contains the Mercedes-Benz logo banner and the main
        navigation menu. Identical across all five pages.
        ============================================================ -->
-        <div class="gallery">
-        <a href="images/gallery3_charlie.jpg" data-lightbox="mygallery" data-title="charlie The Cat">
-           <img src="images/gallery3_charlie_large.JPG" alt="charlie the two toned Cat" />
-         </a>
-        
-        
   <header>
 
     <!-- Site banner / logo image -->
@@ -71,6 +59,12 @@
          class="active" marks About Us as the current page.
          ======================================================== -->
     <nav>
+      <!-- Hamburger button — visible on mobile only, hidden on desktop via CSS -->
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul class="navigation">
         <li><a href="index.html">Home</a></li>
         <!-- About is the active/current page -->
@@ -103,7 +97,7 @@
          was founded, starting with Karl Benz's 1886 invention of
          the first petrol-powered automobile.
          ========================================================== -->
-    <section>
+    <section class="animate-on-scroll">
       <h2>Our History</h2>
       <!-- Paragraph 1: Origin of the brand -->
       <p>
@@ -125,7 +119,7 @@
          VISION SECTION: Describes what Mercedes-Benz aspires to
          achieve in terms of brand loyalty and sustainable mobility.
          ========================================================== -->
-    <section>
+    <section class="animate-on-scroll">
       <h2>Our Vision</h2>
       <!-- Vision statement paragraph 1 -->
       <p>
@@ -144,7 +138,7 @@
          MISSION SECTION: Explains Mercedes-Benz's commitment to
          customer satisfaction, quality, and online experience.
          ========================================================== -->
-    <section>
+    <section class="animate-on-scroll">
       <h2>Our Mission</h2>
       <!-- Mission statement paragraph 1 -->
       <p>
@@ -164,11 +158,11 @@
          TEAM SECTION: Displays a team photo followed by a list of
          key personnel and their roles within the company.
          ========================================================== -->
-    <section>
+    <section class="animate-on-scroll">
       <h2>Our Team</h2>
 
       <!-- Team group photo — alt text describes image for screen readers -->
-      <img src="images/Image Apr 17, 2026 1.png" alt="The Mercedes-Benz South Africa team">
+      <img src="images/Image Apr 17, 2026 1.png" alt="The Mercedes-Benz South Africa team" loading="lazy">
 
       <!-- Subheading for the names list -->
       <h3>Team Members and Job Descriptions</h3>
@@ -196,6 +190,9 @@
     <p>Mercedes-Benz &copy;&trade; 2026</p>
   </footer>
   <!-- ===== END FOOTER ===== -->
+
+  <!-- External JS — handles navigation, animations, forms -->
+  <script src="js_assets/main.js"></script>
 
 </body>
 </html>

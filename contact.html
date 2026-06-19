@@ -27,6 +27,15 @@
   <meta name="keywords" content="Mercedes-Benz contact, Sandton dealership, Polokwane
   dealership, South Africa, address, phone, email, map">
 
+  <!-- Author (SEO) -->
+  <meta name="author" content="Andile Ndlovu">
+
+  <!-- Open Graph tags for social sharing (SEO) -->
+  <meta property="og:title" content="Contact | Mercedes-Benz">
+  <meta property="og:description" content="Contact Mercedes-Benz South Africa. Find our branch addresses, phone number, email, and maps for Sandton and Polokwane.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/Image1 Apr 17, 2026, 03_42_57 PM.png">
+
   <!-- Title shown in the browser tab -->
   <title>Contact | Mercedes-Benz</title>
 
@@ -50,6 +59,12 @@
          class="active" marks Contact as the current page.
          ======================================================== -->
     <nav>
+      <!-- Hamburger button — visible on mobile only, hidden on desktop via CSS -->
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul class="navigation">
         <li><a href="index.html">Home</a></li>
         <li><a href="about_us.html">About</a></li>
@@ -121,27 +136,69 @@
       <!-- --------------------------------------------------------
            CONTACT FORM: Collects visitor name, email, subject,
            and message. All fields have placeholder text to guide
-           the user. name and email fields are marked required.
-           The form currently has no action attribute — this would
-           be connected to a back-end handler or service in Part 3.
+           the user. IDs and error spans are ready for client-side
+           validation and processing, added in Part 3.
            -------------------------------------------------------- -->
-      <form>
+      <!-- --------------------------------------------------------
+           CONTACT FORM — PART 3
+           Fields: Name, Email, Message Type (required by brief),
+           and Message. Validated by handleContactSubmit() in
+           main.js. On success, a pre-filled mailto: link is
+           opened so the message is sent via the visitor's own
+           email client — fulfilling the brief requirement to
+           "compile the information into an email format".
+           -------------------------------------------------------- -->
+      <form id="contactForm" onsubmit="return handleContactSubmit(event);">
+
         <!-- Full name input -->
-        <input type="text" name="name" placeholder="Your Name" required>
+        <label for="contactName">Your Name</label>
+        <input type="text"
+               id="contactName"
+               name="name"
+               placeholder="Your full name"
+               required>
+        <span class="error-msg" id="contactNameError"></span>
 
-        <!-- Email address input — browser validates email format automatically -->
-        <input type="email" name="email" placeholder="Your Email" required>
+        <!-- Email address input -->
+        <label for="contactEmail">Your Email</label>
+        <input type="email"
+               id="contactEmail"
+               name="email"
+               placeholder="Your email address"
+               required>
+        <span class="error-msg" id="contactEmailError"></span>
 
-        <!-- Subject / topic of message -->
-        <input type="text" name="subject" placeholder="Subject">
+        <!-- Message Type dropdown — REQUIRED by Part 3 brief -->
+        <label for="contactMessageType">Message Type</label>
+        <select id="contactMessageType" name="messageType" required>
+          <option value="" disabled selected>Select a message type</option>
+          <option value="General Enquiry">General Enquiry</option>
+          <option value="Test Drive Request">Test Drive Request</option>
+          <option value="Service Booking">Service Booking</option>
+          <option value="Pricing Request">Pricing Request</option>
+          <option value="Complaint">Complaint</option>
+          <option value="Feedback">Feedback</option>
+        </select>
+        <span class="error-msg" id="contactMessageTypeError"></span>
 
-        <!-- Multi-line message area -->
-        <textarea name="message" placeholder="Your Message"></textarea>
+        <!-- Full message textarea -->
+        <label for="contactMessage">Your Message</label>
+        <textarea id="contactMessage"
+                  name="message"
+                  placeholder="Write your full message here"
+                  required></textarea>
+        <span class="error-msg" id="contactMessageError"></span>
 
-        <!-- Submit button — sends the form when clicked -->
+        <!-- Submit button -->
         <button type="submit">Send Message</button>
       </form>
       <!-- ===== END CONTACT FORM ===== -->
+
+      <!-- ========================================================
+           RESPONSE MESSAGE: Hidden by default. Shown by JavaScript
+           after a successful, validated submission.
+           ======================================================== -->
+      <div id="contactResponse" class="response-message" style="display:none;"></div>
 
     </section>
     <!-- ===== END CONTACT DETAILS AND FORM SECTION ===== -->
@@ -223,6 +280,9 @@
     <p>Mercedes-Benz &copy;&trade; 2026</p>
   </footer>
   <!-- ===== END FOOTER ===== -->
+
+  <!-- External JS — handles navigation, animations, forms -->
+  <script src="js_assets/main.js"></script>
 
 </body>
 </html>
