@@ -10,8 +10,7 @@
 
 ## Live Site
 
-> **Deploy to GitHub Pages and paste the URL here:**
-> `https://[your-username].github.io/[your-repo-name]/`
+> **URL:** `https://andile-ops812.github.io/WEDE5020/`
 
 ---
 
@@ -30,58 +29,72 @@ A five-page responsive website for Mercedes-Benz South Africa, built with HTML5,
 | `contact.html` | Contact details, validated form, Google Maps |
 
 ### Folder Structure
+WEDE5020/
 
-```
-mercedes-benz/
 ├── index.html
-├── about_us.html
-├── products.html
-├── enquires.html
-├── contact.html
-├── robots.txt
-├── sitemap.xml
-├── README.md
-├── CHANGELOG.md
-├── css_assets/
-│   └── mystyles.css
-├── js_assets/
-│   ├── main.js         ← Part 3: all site-wide JS
-│   └── validation.js   ← Part 2: enquiry form validation (retained)
-└── images/
-    └── [image files]
-```
 
+├── about_us.html
+
+├── products.html
+
+├── enquires.html
+
+├── contact.html
+
+├── robots.txt
+
+├── sitemap.xml
+
+├── README.md
+
+├── CHANGELOG.md
+
+├── css_assets/
+
+│   └── mystyles.css
+
+├── js_assets/
+
+│   ├── main.js
+
+│   └── validation.js
+
+└── images/
+
+└── [image files]
 ---
 
 ## Part 3 Changelog
 
-See `CHANGELOG.md` for the full detailed changelog.
+### [2026-06-19] — Part 3: JavaScript, SEO, Forms, Deployment
 
-### Summary of Part 3 additions
-
-- Created `js_assets/main.js` with hamburger menu, scroll animations, accordion, search/filter, enquiry form validation, and contact form validation
-- Replaced Google Form iframe with a validated HTML enquiry form that shows a dynamic price and availability response
-- Added `Message Type` dropdown to the contact form and wired full JS validation with mailto compilation
-- Added four-model accordion with images, specs, and enquiry CTAs on the Products page
-- Added live search/filter input on the Products page
-- Added scroll-triggered entrance animations using IntersectionObserver
-- Added page fade-in animation and button/input CSS transitions
-- Added hamburger navigation toggle for mobile
-- Added `<meta name="author">` and Open Graph tags to all five pages
-- Added `loading="lazy"` to all non-header images
-- Added `<link rel="preload">` for the hero banner image on the homepage
-- Updated `robots.txt` with Disallow rule and sitemap reference
-- Rebuilt `sitemap.xml` with proper `<lastmod>`, `<changefreq>`, and `<priority>` tags
-- Linked `main.js` to all five pages
+- **Created** `js_assets/main.js` with hamburger menu toggle, scroll-triggered entrance animations, products accordion, live search/filter, enquiry form validation with dynamic price and availability response, and contact form validation with mailto compilation
+- **Retained** `js_assets/validation.js` from Part 2
+- **Replaced** static model lists on `products.html` with a four-card accordion (G63 AMG, C63 AMG, C200 AMG, GLS 600 Maybach), each showing a model image, spec list, and enquiry CTA
+- **Added** live search/filter input on `products.html` that filters accordion cards in real time
+- **Fixed** enquiry form `onsubmit` to call `handleEnquirySubmit()` — validates all fields and displays a dynamic response showing estimated price and availability based on the selected tier
+- **Added** Message Type dropdown to `contact.html` — fulfils the Part 3 brief requirement; form validates all fields and compiles a pre-filled mailto link
+- **Added** hamburger navigation button to all five pages — toggles the nav on mobile with `aria-expanded` for accessibility
+- **Added** scroll-triggered entrance animations using `IntersectionObserver` on all pages
+- **Added** page fade-in animation, button press transitions, and input focus glow across the site
+- **Added** `<meta name="author">` and Open Graph tags (`og:title`, `og:description`, `og:type`, `og:image`) to all five pages
+- **Added** `<link rel="preload">` for the hero banner image on `index.html`
+- **Added** `loading="lazy"` to all non-header images
+- **Created** `robots.txt` — allows all crawlers, disallows `/private/`, includes sitemap reference
+- **Created** `sitemap.xml` — lists all five pages with `<lastmod>`, `<changefreq>`, and `<priority>` tags
+- **Deployed** site live on GitHub Pages at `https://andile-ops812.github.io/WEDE5020/`
+- **Updated** `robots.txt` and `sitemap.xml` with live GitHub Pages URL
+- **Rewrote** `README.md` with project overview, folder structure, changelog, and references
+- **Wrote** `CHANGELOG.md` with detailed entry for every Part 3 change
 
 ---
 
 ## Technologies Used
 
 - **HTML5** — semantic elements, accessibility attributes (aria-*)
-- **CSS3** — Flexbox, CSS Grid, media queries, CSS animations, transitions
-- **JavaScript (ES5/6)** — DOM manipulation, IntersectionObserver, form validation, IntersectionObserver, mailto API
-- **GitHub Pages** — static site hosting
+- **CSS3** — Flexbox, CSS Grid, media queries, CSS animations, keyframes, transitions
+- **JavaScript (ES5/6)** — DOM manipulation, IntersectionObserver, form validation, mailto API
+- **GitHub Pages** — static site hosting and deployment
 
 ---
 
@@ -94,3 +107,4 @@ See `CHANGELOG.md` for the full detailed changelog.
 - Google Developers. (2024). *Search Engine Optimisation (SEO) Starter Guide*. https://developers.google.com/search/docs/fundamentals/seo-starter-guide
 - Sitemaps.org. (2024). *Sitemap protocol*. https://www.sitemaps.org/protocol.html
 - Open Graph Protocol. (2024). *The Open Graph Protocol*. https://ogp.me/
+
